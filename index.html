@@ -5,7 +5,293 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
     </head>
+    <body></body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Demo virtual</title>
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@0.178.0/build/three.module.js",
+                    "three/GLTFLoader": "https://cdn.jsdelivr.net/npm/three@0.178.0/examples/jsm/loaders/GLTFLoader.js",
+                    "three/RGBELoader": "https://cdn.jsdelivr.net/npm/three@0.178.0/examples/jsm/loaders/RGBELoader.js",
+                    "three/OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.178.0/examples/jsm/controls/OrbitControls.js"
+                }
+            }
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            #modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 500px;
+                height: 500px;
+                background-color: #fff;
+                z-index: 2;
+                border-bottom-right-radius: 5px;
+                box-sizing: 0px 0px 10px 10px rgba(0, 0, 0, 0.5);
+                padding: 20px 20px;
+            }
+            .title {
+                font-size: 32px;
+                font-weight: 400;
+                margin-bottom: 20px;
+            }
+            #modal button {
+                background: unset;
+                border: unset;
+                font-size: 25px;
+                position: absolute;
+                right: 10px;
+                top: 5px;
+                cursor: pointer;
+                transition: all linear 0.2s;
+            }
+            #modal button:hover {
+                transform: scale(1.5);
+            }
+            .content {
+                font-size: 18px;
+            }
+            #modal img {
+                width: 100%;
+                height: 100%;
+            }
+            #modal {
+                display: none;
+            }
+            #modal.open {
+                display: block;
+            }
+            #slider-wrapper {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                overflow-x: scroll;
+            }
+            #slider {
+                --width: 400px;
+                display: flex;
+                flex-wrap: nowrap;
+                width: calc(var(--width) * 9);
+            }
+            #slider img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .slider-item {
+                width: var(--width);
+                position: relative;
+                height: calc(var(--width) / 2);
+            }
+            @media (max-width: 768px) and (min-width: 481px) {
+                #slider {
+                    --width: 300px;
+                }
+            }
+            @media (max-width: 480px) {
+                #slider {
+                    --width: 200px;
+                }
+            }
+
+            .slider-item:hover::before,
+            .slider-item.active:before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border: 2px solid #ccc;
+            }
+            .slider-btn-right,
+            .slider-btn-left {
+                position: fixed;
+                bottom: 70px;
+                background: unset;
+                border: unset;
+                transition: all linear 0.2s;
+                height: 60px;
+                width: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                color: #292929;
+
+                font-size: 28px;
+                background-color: #fff;
+                color: #292929;
+                border-radius: 100%;
+                cursor: pointer;
+            }
+            .slider-btn-right:hover,
+            .slider-btn-left:hover {
+                transform: scale(1.4);
+            }
+            .slider-btn-right {
+                right: 10px;
+            }
+            .slider-btn-left {
+                left: 10px;
+            }
+            #model-center {
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                z-index: 2;
+                background-color: unset;
+                border: unset;
+                font-size: 40px;
+                /* color: #fff; */
+                transition: all linear 0.2s;
+                cursor: pointer;
+            }
+            #model-center:hover {
+                transform: scale(1.3);
+            }
+            #log {
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #fff;
+                min-height: 100px;
+                width: 300px;
+                z-index: 999;
+                padding: 5px;
+                user-select: all;
+            }
+            #auto-slider {
+                position: fixed;
+                top: 70px;
+                right: 10px;
+                z-index: 2;
+                background-color: unset;
+                border: unset;
+                font-size: 16px;
+                /* color: #fff; */
+                transition: all linear 0.2s;
+                cursor: pointer;
+                background: #fff;
+                padding: 7px 10px;
+                border-radius: 99px;
+            }
+            #auto-slider:hover:not(.disabled) {
+                transform: scale(1.2);
+            }
+            #auto-slider.disabled {
+                filter: brightness(0.8);
+            }
+        </style>
+    </head>
     <body>
-        Hello world
+        <button id="model-center">
+            <svg
+                stroke="currentColor"
+                fill="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path
+                    d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm-7 7H3v4c0 1.1.9 2 2 2h4v-2H5v-4zM5 5h4V3H5c-1.1 0-2 .9-2 2v4h2V5zm14-2h-4v2h4v4h2V5c0-1.1-.9-2-2-2zm0 16h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4z"
+                ></path>
+            </svg>
+        </button>
+        <button id="auto-slider" class="disabled">Enable slider auto</button>
+        <div id="modal">
+            <div id="modal-container">
+                <div class="title">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                    sapiente alias mollitia.
+                </div>
+                <img src="./images/image1.webp" width="400" />
+                <p class="content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                    sapiente alias mollitia. Dolore libero ea cum, neque quo
+                    labore sint eveniet minus, possimus sed maxime corrupti
+                    perferendis suscipit eum exercitationem?
+                </p>
+            </div>
+            <button class="modal-close">x</button>
+        </div>
+        <!-- <div id="log"></div> -->
+        <div id="slider-wrapper">
+            <div id="slider">
+                <div class="slider-item active">
+                    <img src="./images/1.webp" alt width="200" />
+                </div>
+                <div class="slider-item">
+                    <img src="./images/1.webp" alt width="200" />
+                </div>
+                <div class="slider-item">
+                    <img src="./images/1.webp" alt width="200" />
+                </div>
+                <div class="slider-item">
+                    <img src="./images/1.webp" alt width="200" />
+                </div>
+                <div class="slider-item">
+                    <img src="./images/1.webp" alt width="200" />
+                </div>
+                <div class="slider-item">
+                    <img src="./images/1.webp" alt width="200" />
+                </div>
+                <div class="slider-item">
+                    <img src="./images/1.webp" alt width="200" />
+                </div>
+                <div class="slider-item">
+                    <img src="./images/1.webp" alt width="200" />
+                </div>
+                <div class="slider-item">
+                    <img src="./images/1.webp" alt width="200" />
+                </div>
+            </div>
+            <button class="slider-btn-left" id="slider-btn-pre">
+                <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 320 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                    ></path>
+                </svg>
+            </button>
+            <button class="slider-btn-right" id="slider-btn-next">
+                <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 320 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+                    ></path>
+                </svg>
+            </button>
+        </div>
+        <div id="container"></div>
     </body>
+    <script type="module" src="./main.js"></script>
 </html>
