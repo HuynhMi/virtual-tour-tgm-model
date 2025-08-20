@@ -7,56 +7,56 @@ const products = [
         name: 'Item 1',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: '/assets/images/1.webp',
+        img: './assets/images/1.webp',
     },
     {
         name: 'Item 2',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: '/assets/images/2.webp',
+        img: './assets/images/2.webp',
     },
     {
         name: 'Item 3',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: '/assets/images/3.webp',
+        img: './assets/images/3.webp',
     },
     {
         name: 'Item 4',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: '/assets/images/4.webp',
+        img: './assets/images/4.webp',
     },
     {
         name: 'Item 5',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: '/assets/images/5.webp',
+        img: './assets/images/5.webp',
     },
     {
         name: 'Item 6',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: '/assets/images/6.webp',
+        img: './assets/images/6.webp',
     },
     {
         name: 'Item 7',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: '/assets/images/7.webp',
+        img: './assets/images/7.webp',
     },
     {
         name: 'Item 8',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: '/assets/images/8.webp',
+        img: './assets/images/8.webp',
     },
     {
         name: 'Item 9',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        video: '/assets/images/dynamic-charting.mp4',
-        img: '/assets/images/9.webp',
+        video: './assets/images/dynamic-charting.mp4',
+        img: './assets/images/9.webp',
     },
 ];
 console.log('products');
@@ -77,7 +77,7 @@ camera.lookAt(0, 0, 0);
 let room;
 const loaderGLTF = new GLTFLoader();
 loaderGLTF.load(
-    '/room.glb',
+    './room.glb',
     function (gltf) {
         room = gltf.scene;
         // Try these adjustments after loading the model
@@ -145,7 +145,7 @@ animate();
 const textureLoader = new THREE.TextureLoader();
 const interactiveObjects = [];
 const objectLoader = new THREE.ObjectLoader();
-objectLoader.load('/group.json', (obj) => {
+objectLoader.load('./group.json', (obj) => {
     scene.add(obj);
 
     products.forEach((product) => {
