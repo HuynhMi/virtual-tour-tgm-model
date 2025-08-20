@@ -305,20 +305,22 @@ function goToCenter() {
 function handleNext() {
     const total_slide = slides.length;
     currentSlide = currentSlide >= total_slide - 1 ? 0 : currentSlide + 1;
-    updateSlideActive(currentSlide);
+    updateSlideActive(currentSlide, true);
 }
 
 function handlePrevious() {
     const total_slide = slides.length;
     currentSlide = currentSlide == 0 ? total_slide - 1 : currentSlide - 1;
-    updateSlideActive(currentSlide);
+    updateSlideActive(currentSlide, true);
 }
 
-function updateSlideActive(index) {
+function updateSlideActive(index, isScrolling = false) {
     slides.forEach((it, idx) => {
         it.classList.toggle('active', idx === index);
         if (idx === index) {
-            // it.scrollIntoView({ behavior: 'smooth', top: '800px' });
+            if (isScrolling) {
+                it.scrollIntoView({ behavior: 'smooth', top: '800px' });
+            }
             const productName = it.getAttribute('data-product-name');
             focusOnProduct(productName);
         }
