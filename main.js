@@ -7,58 +7,59 @@ const products = [
         name: 'Item 1',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './images/1.webp',
+        img: '/assets/images/1.webp',
     },
     {
         name: 'Item 2',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './images/2.webp',
+        img: '/assets/images/2.webp',
     },
     {
         name: 'Item 3',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './images/3.webp',
+        img: '/assets/images/3.webp',
     },
     {
         name: 'Item 4',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './images/4.webp',
+        img: '/assets/images/4.webp',
     },
     {
         name: 'Item 5',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './images/5.webp',
+        img: '/assets/images/5.webp',
     },
     {
         name: 'Item 6',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './images/6.webp',
+        img: '/assets/images/6.webp',
     },
     {
         name: 'Item 7',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './images/7.webp',
+        img: '/assets/images/7.webp',
     },
     {
         name: 'Item 8',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './images/8.webp',
+        img: '/assets/images/8.webp',
     },
     {
         name: 'Item 9',
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        video: './images/dynamic-charting.mp4',
-        img: './images/9.webp',
+        video: '/assets/images/dynamic-charting.mp4',
+        img: '/assets/images/9.webp',
     },
 ];
+console.log('products');
 //create scene, camera, renderer
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xaaaaaa);
@@ -72,7 +73,6 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(-9.186, 4, 7.829);
 camera.rotation.set(0, 0, 0);
 camera.lookAt(0, 0, 0);
-
 //load room
 let room;
 const loaderGLTF = new GLTFLoader();
@@ -145,7 +145,7 @@ animate();
 const textureLoader = new THREE.TextureLoader();
 const interactiveObjects = [];
 const objectLoader = new THREE.ObjectLoader();
-objectLoader.load('/products/group.json', (obj) => {
+objectLoader.load('/group.json', (obj) => {
     scene.add(obj);
 
     products.forEach((product) => {
