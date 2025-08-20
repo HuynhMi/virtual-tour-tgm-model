@@ -318,7 +318,7 @@ function updateSlideActive(index) {
     slides.forEach((it, idx) => {
         it.classList.toggle('active', idx === index);
         if (idx === index) {
-            it.scrollIntoView({ behavior: 'smooth' });
+            it.scrollIntoView({ behavior: 'smooth', top: '800px' });
             const productName = it.getAttribute('data-product-name');
             focusOnProduct(productName);
         }
