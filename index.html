@@ -31,55 +31,100 @@
             body {
                 padding: 0;
                 margin: 0;
+                font-family: 'Roboto';
             }
-            #modal {
+            .modal-wrapper {
                 position: fixed;
-                top: 0;
-                left: 0;
-                width: 500px;
-                height: 500px;
-                background-color: #fff;
-                z-index: 2;
-                border-bottom-right-radius: 5px;
-                box-sizing: 0px 0px 10px 10px rgba(0, 0, 0, 0.5);
+                inset: 0;
+                background-color: #00000082;
+                z-index: -1;
+                opacity: 0;
+                display: flex;
+                justify-content: center;
+                padding: 20px 0px;
+                transition: all ease-in-out 0.3s;
+            }
+            .modal-inner {
+                /* background-color: #fff; */
+                border-radius: 5px;
+                /* box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.5); */
                 padding: 20px 20px;
+                /* min-width: 500px; */
+                /* max-height: 1000px; */
+                /* min-height: 600px; */
+                margin-left: auto;
+                margin-right: auto;
+                position: relative;
+                padding-top: 35px;
+                max-height: 60vh;
+                max-width: 1000px;
+            }
+            .modal-inner img {
+                height: 100%;
+                aspect-ratio: auto 573 / 322;
+                object-fit: cover;
+                border-radius: 8px;
+                opacity: 1;
+                animation: appear 0.4s ease-in-out forwards;
+                transform-origin: center center;
+            }
+
+            @keyframes appear {
+                from {
+                    opacity: 0;
+                    transform: scale(0.8); /* smaller at start */
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1); /* full size */
+                }
+            }
+            .modal-container {
+                height: 100%;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+            }
+            @media (max-width: 540px) {
+                .modal-inner {
+                    padding: 32px 10px 10px;
+                }
             }
             .title {
                 font-size: 32px;
                 font-weight: 400;
                 margin-bottom: 20px;
             }
-            #modal button {
+
+            .modal-wrapper .modal-close {
                 background: unset;
                 border: unset;
-                font-size: 25px;
+                font-size: 18px;
+                color: #fff;
+                text-decoration: underline;
                 position: absolute;
                 right: 10px;
                 top: 5px;
                 cursor: pointer;
                 transition: all linear 0.2s;
             }
-            #modal button:hover {
-                transform: scale(1.5);
+            .modal-wrapper .modal-close:hover {
+                transform: scale(1.1);
             }
             .content {
                 font-size: 18px;
             }
-            #modal img {
-                width: 100%;
-                height: 100%;
-            }
-            #modal {
-                display: none;
-            }
-            #modal.open {
-                display: block;
+
+            .modal-wrapper.open {
+                z-index: 222;
+                opacity: 1;
             }
             .footer {
                 position: fixed;
                 bottom: 0;
                 left: 0;
                 right: 0;
+                z-index: 999;
             }
             .slider-wrapper {
                 position: relative;
@@ -103,6 +148,13 @@
                 position: relative;
                 /* height: calc(var(--width) / 2); */
                 aspect-ratio: auto 573 / 322;
+            }
+            .main-slide {
+                display: block;
+                width: 100%;
+            }
+            .main-slide img {
+                width: 100%;
             }
             @media (max-width: 768px) and (min-width: 481px) {
                 .slider {
@@ -169,37 +221,25 @@
             #model-center:hover {
                 transform: scale(1.3);
             }
-            #log {
-                position: fixed;
-                top: 0;
-                left: 0;
-                background-color: #fff;
-                min-height: 100px;
-                width: 300px;
+
+            #momensSlider .slider {
+                --width: 20vw;
+            }
+            #momensModal.open {
                 z-index: 999;
-                padding: 5px;
-                user-select: all;
             }
-            #auto-slider {
-                position: fixed;
-                top: 70px;
-                right: 10px;
-                z-index: 2;
-                background-color: unset;
-                border: unset;
-                font-size: 16px;
-                /* color: #fff; */
-                transition: all linear 0.2s;
-                cursor: pointer;
-                background: #fff;
-                padding: 7px 10px;
-                border-radius: 99px;
+            .explore-link {
+                font-size: 20px;
+                color: #fff;
+                text-decoration: underline;
+                text-transform: uppercase;
+                font-style: italic;
+                margin-top: 10px;
+                font-weight: 500;
+                transition: all linear 0.1s;
             }
-            #auto-slider:hover:not(.disabled) {
-                transform: scale(1.2);
-            }
-            #auto-slider.disabled {
-                filter: brightness(0.8);
+            .explore-link:hover {
+                color: red;
             }
         </style>
     </head>
@@ -221,142 +261,12 @@
             </svg>
         </button>
         <button id="auto-slider" class="disabled">Enable slider auto</button>
-        <div id="modal">
-            <div id="modal-container">
-                <div class="title">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-                    sapiente alias mollitia.
-                </div>
-                <img src="./assets/images/1.webp" width="400" />
-                <p class="content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-                    sapiente alias mollitia. Dolore libero ea cum, neque quo
-                    labore sint eveniet minus, possimus sed maxime corrupti
-                    perferendis suscipit eum exercitationem?
-                </p>
-            </div>
+        <!-- <div id="modal">
+            <div id="modal-container"></div>
             <button class="modal-close">x</button>
-        </div>
+        </div> -->
         <!-- <div id="log"></div> -->
-        <div class="footer">
-            <div class="slider-wrapper" id="employeeStoriesSlider">
-                <div class="slider-wrapper__inner">
-                    <div class="slider">
-                        <!-- <div class="slide">
-                    <img src="./assets/images/1.webp" alt width="200" />
-                </div> -->
-                    </div>
-                </div>
-                <button class="btn-pre">
-                    <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        stroke-width="0"
-                        viewBox="0 0 320 512"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
-                        ></path>
-                    </svg>
-                </button>
-                <button class="btn-next">
-                    <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        stroke-width="0"
-                        viewBox="0 0 320 512"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
-                        ></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="slider-wrapper" id="tgmMomentsSlider">
-                <div class="slider-wrapper__inner">
-                    <div class="slider">
-                        <!-- <div class="slide">
-                    <img src="./assets/images/1.webp" alt width="200" />
-                </div> -->
-                    </div>
-                </div>
-                <button class="btn-pre">
-                    <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        stroke-width="0"
-                        viewBox="0 0 320 512"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
-                        ></path>
-                    </svg>
-                </button>
-                <button class="btn-next">
-                    <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        stroke-width="0"
-                        viewBox="0 0 320 512"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
-                        ></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="slider-wrapper" id="mainSlider">
-                <div class="slider-wrapper__inner">
-                    <div class="slider">
-                        <!-- <div class="slide">
-                    <img src="./assets/images/1.webp" alt width="200" />
-                </div> -->
-                    </div>
-                </div>
-                <button class="btn-pre">
-                    <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        stroke-width="0"
-                        viewBox="0 0 320 512"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
-                        ></path>
-                    </svg>
-                </button>
-                <button class="btn-next">
-                    <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        stroke-width="0"
-                        viewBox="0 0 320 512"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
-                        ></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
+        <div class="footer"></div>
 
         <div id="container"></div>
         <script type="module" src="./main.js"></script>

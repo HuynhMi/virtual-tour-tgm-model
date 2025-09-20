@@ -60,8 +60,9 @@ const products = [
     },
 ];
 
-const ACTION1 = 'SHOW SLIDER';
+const ACTION1 = 'SHOW MODAL WITH MOMENTS SLIDER ';
 const ACTION2 = 'SHOW MODAL';
+const ACTION3 = 'SHOW MODAL WITH STORIES SLIDER';
 
 const BUTTON1 = 'Explore Full Report';
 const BUTTON2 = 'Read full story';
@@ -170,19 +171,19 @@ const tgmMoments = [
 const presents = [
     {
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/infographics/1.jpg',
-        action: [ACTION2],
+        action: ACTION2,
     },
     {
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/1.jpg',
-        action: [ACTION1, ACTION2],
+        action: ACTION1,
         items: tgmMoments,
     },
     {
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/2.jpg',
-        action: [ACTION1, ACTION2],
+        action: ACTION3,
         items: employeeStories,
     },
-    ...consumerSnapshot.map((it) => ({ ...it, action: [ACTION2] })),
+    ...consumerSnapshot.map((it) => ({ ...it, action: ACTION2 })),
 ];
 
 console.log('presents', presents);
@@ -332,7 +333,7 @@ window.addEventListener('click', (event) => {
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(interactiveObjects);
     // console.log('intersects', intersects);
-    toggleModal(intersects.length > 0);
+    // toggleModal(intersects.length > 0);
     intersects.forEach((intersect) => {
         // console.log(`Clicked ${intersect.object.name}`);
         // console.log(intersect.object);
@@ -352,18 +353,6 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-function toggleModal(condition) {
-    const modal = document.getElementById('modal');
-    modal.classList.toggle('open', condition);
-}
-closeModal();
-function closeModal() {
-    const btn = document.querySelector('#modal button');
-    const modal = document.getElementById('modal');
-    btn.addEventListener('click', function () {
-        modal.classList.remove('open');
-    });
-}
 function updateModalContainer(item) {
     const container = document.getElementById('modal-container');
     if (!modal || !container) return;
@@ -550,19 +539,31 @@ show
     slider-wrapper -> slider -> slide
     btn-next
     btn-pre
+    type: navigation| thumnail
 */
+const SLIDER_TYPE_1 = 'navigation';
+const SLIDER_TYPE_2 = 'thumnail';
 
 class Slider {
-    constructor(selector, data) {
-        this.slider = document.querySelector(`${selector} .slider`);
+    constructor(id, data, selectorAppend, type = SLIDER_TYPE_1) {
+        this.id = id;
+        this.type = type;
+        this.node =
+            this.type == SLIDER_TYPE_2
+                ? this.createHTMLThumnail()
+                : this.createHTML();
+        //after append, we can select selectors below step
+        this.appendSliderTo(selectorAppend);
+        this.sliderWrapper = document.querySelector(`#${id}`);
+        this.slider = document.querySelector(`#${id} .slider`);
         this.data = data || [];
         console.log('data', data);
         this.appendChild();
         this.current_slide = 1;
         this.slides = [...this.slider.querySelectorAll('.slide')];
         this.totalSlides = this.slides.length;
-        this.btnNext = document.querySelector(`${selector} .btn-next`);
-        this.btnPre = document.querySelector(`${selector} .btn-pre`);
+        this.btnNext = document.querySelector(`#${id} .btn-next`);
+        this.btnPre = document.querySelector(`#${id} .btn-pre`);
 
         this.init();
     }
@@ -571,23 +572,36 @@ class Slider {
         this.btnNext.addEventListener('click', () => {
             this.next();
             this.handleTransform();
+            this.updateThumnailSlide(this.data[this.current_slide - 1].imgUrl);
         });
         this.btnPre.addEventListener('click', () => {
             this.pre();
             this.handleTransform();
+            this.updateThumnailSlide(this.data[this.current_slide - 1].imgUrl);
         });
+        this.slides.forEach((slide, idx) =>
+            slide.addEventListener('click', () => {
+                //update active slide
+                this.current_slide = idx + 1;
+                this.updateThumnailSlide(this.data[idx].imgUrl);
+            })
+        );
     }
 
     appendChild() {
-        this.data = this.data.map(
+        console.log('appending');
+        const html = this.data.map(
             (it) => `
                 <div class="slider-item slide">
                     <img src="${it.imgUrl}" alt width="200" />
                 </div>
             `
         );
-        this.slider.innerHTML = this.data.join();
+        console.log('this.slider', this.slider);
+        this.slider.innerHTML = html.join();
+        this.updateThumnailSlide(this.data[0].imgUrl);
     }
+
     next() {
         this.current_slide =
             this.current_slide == this.totalSlides ? 1 : this.current_slide + 1;
@@ -605,7 +619,217 @@ class Slider {
             it.classList.toggle('active', idx == this.current_slide - 1);
         });
     }
+
+    createHTML() {
+        const div = document.createElement('div');
+        div.setAttribute('class', 'slider-wrapper');
+        div.setAttribute('id', this.id);
+        div.innerHTML = `
+            <div class="slider-wrapper__inner">
+                    <div class="slider">
+                        <!-- <div class="slide">
+                    <img src="./assets/images/1.webp" alt width="200" />
+                </div> -->
+                    </div>
+                </div>
+                <button class="btn-pre">
+                    <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 320 512"
+                        height="1em"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                        ></path>
+                    </svg>
+                </button>
+                <button class="btn-next">
+                    <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 320 512"
+                        height="1em"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+                        ></path>
+                    </svg>
+                </button>
+        `;
+        return div;
+    }
+
+    createHTMLThumnail() {
+        const div = document.createElement('div');
+        div.setAttribute('class', 'slider-wrapper');
+        div.setAttribute('id', this.id);
+        div.innerHTML = `
+            <div class="main-slide"></div>
+            <div class="slider-wrapper__inner">
+                    <div class="slider">
+                        <!-- <div class="slide">
+                    <img src="./assets/images/1.webp" alt width="200" />
+                </div> -->
+                    </div>
+                </div>
+                <button class="btn-pre">
+                    <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 320 512"
+                        height="1em"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                        ></path>
+                    </svg>
+                </button>
+                <button class="btn-next">
+                    <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 320 512"
+                        height="1em"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+                        ></path>
+                    </svg>
+                </button>
+        `;
+
+        return div;
+    }
+
+    updateThumnailSlide(imgUrl) {
+        if (this.type == SLIDER_TYPE_2) {
+            this.sliderWrapper.querySelector(
+                '.main-slide'
+            ).innerHTML = `<img src="${imgUrl}" alt  />`;
+        }
+    }
+
+    appendSliderTo(selectorAppend) {
+        console.log(12344);
+        const el = document.querySelector(`${selectorAppend}`);
+        console.log(el);
+        if (el) {
+            el.append(this.node);
+        }
+    }
 }
-const slider1 = new Slider('#mainSlider', presents);
-const slider2 = new Slider('#tgmMomentsSlider', tgmMoments);
-const slider3 = new Slider('#employeeStoriesSlider', employeeStories);
+// slider1.appendSliderTo('#footer');
+// const slider2 = new Slider('#tgmMomentsSlider', tgmMoments);
+// const slider3 = new Slider('#employeeStoriesSlider', employeeStories);
+
+/*
+    state open or null
+*/
+class Modal {
+    constructor(id, htmlInner = '', state = null) {
+        console.log('state', state);
+        this.id = id;
+        this.state = state;
+        this.createHtml();
+        this.btnClose = document.querySelector(`#${id} .modal-close`);
+        this.modalEl = document.getElementById(id);
+        this.containerEl = this.modalEl.querySelector('.modal-container');
+        // this.setContainer(htmlInner);
+        this.events();
+    }
+
+    createHtml() {
+        const div = document.createElement('div');
+        div.setAttribute('class', `modal-wrapper ${this.state}`);
+        div.setAttribute('id', this.id);
+        div.innerHTML = `
+            <div class="modal-inner">
+                <div class="modal-container">lorem...</div>
+                <button class="modal-close">Close</button>
+            </div>
+        `;
+        document.body.append(div);
+    }
+
+    close() {
+        this.modalEl.classList.remove('open');
+    }
+
+    open() {
+        this.modalEl.classList.add('open');
+    }
+    setContainer(htmlInner) {
+        this.containerEl.innerHTML = htmlInner;
+    }
+
+    events() {
+        this.btnClose.addEventListener('click', () => {
+            this.close();
+        });
+    }
+}
+
+const mainModal = new Modal('mainModal');
+const momensModal = new Modal('momensModal');
+const employeeStoriesModal = new Modal('employeeStoriesModal');
+
+const presentSlider = new Slider('mainSlider', presents, '.footer');
+const momensSlider = new Slider(
+    'momensSlider',
+    tgmMoments,
+    '#momensModal .modal-container',
+    SLIDER_TYPE_2
+);
+// const employeeStoriesSlider = new Slider(
+//     'mainSlider',
+//     employeeStories,
+//     '#employeeStoriesModal .modal-container'
+// );
+
+const mainSlides = [...document.querySelectorAll('#mainSlider .slide')];
+mainSlides.forEach((el, idx) => {
+    el.addEventListener('click', function () {
+        mainModal.close();
+        momensModal.close();
+
+        const { imgUrl, action, link } = presents[idx];
+        if (imgUrl) {
+            let html = '';
+            if (action == ACTION1) {
+                momensModal.open();
+            }
+            if (action == ACTION2) {
+                if (link) {
+                    html = `
+                    <img src="${imgUrl}" alt/>
+                    <a href="${link}" class="explore-link">${BUTTON1}</a>
+                `;
+                } else {
+                    html = `<img src="${imgUrl}" alt/>`;
+                }
+                mainModal.setContainer(html);
+                mainModal.open();
+            }
+        }
+    });
+});
+
+//create modal -> create slider, append it to modal
+// const momensSlider = new Slider(
+//     'momensSlider',
+//     tgmMoments,
+//     '#momensModal .modal-container'
+// );
