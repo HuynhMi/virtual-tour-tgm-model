@@ -71,32 +71,40 @@ const consumerSnapshot = [
     {
         link: 'https://tgmresearch.com',
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/1.jpg',
+        name: 'Item 4',
     },
     {
+        name: 'Item 5',
         link: 'https://tgmresearch.com',
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/2.jpg',
     },
     {
+        name: 'Item 6',
         link: 'https://tgmresearch.com',
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/3.jpg',
     },
     {
+        name: 'Item 7',
         link: 'https://tgmresearch.com',
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/4.jpg',
     },
     {
+        name: 'Item 8',
         link: 'https://tgmresearch.com',
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/5.jpg',
     },
     {
+        name: 'Item 9',
         link: 'https://tgmresearch.com',
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/6.jpg',
     },
     {
+        name: 'Item 10',
         link: 'https://tgmresearch.com',
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/7.jpg',
     },
     {
+        name: 'Item 11',
         link: 'https://tgmresearch.com',
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/8.jpg',
     },
@@ -170,6 +178,7 @@ const tgmMoments = [
 
 const presents = [
     {
+        name: 'Item 1',
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/infographics/1.jpg',
         action: ACTION2,
     },
@@ -177,11 +186,13 @@ const presents = [
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/1.jpg',
         action: ACTION1,
         items: tgmMoments,
+        name: 'Item 2',
     },
     {
         imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/2.jpg',
         action: ACTION3,
         items: employeeStories,
+        name: 'Item 3',
     },
     ...consumerSnapshot.map((it) => ({ ...it, action: ACTION2 })),
 ];
@@ -273,26 +284,26 @@ animate();
 const textureLoader = new THREE.TextureLoader();
 const interactiveObjects = [];
 const objectLoader = new THREE.ObjectLoader();
-objectLoader.load('./group.json', (obj) => {
+objectLoader.load('./Group2.json', (obj) => {
     scene.add(obj);
 
-    products.forEach((product) => {
+    presents.forEach((item) => {
         // Find the corresponding mesh in the loaded object
         obj.traverse((child) => {
-            if (child.isMesh && child.name === product.name) {
+            if (child.isMesh && child.name === item.name) {
                 // Create texture from image
                 interactiveObjects.push(child);
-                if (product.img) {
+                if (item.imgUrl) {
                     textureLoader.load(
-                        product.img,
+                        item.imgUrl,
                         (texture) => {
-                            console.log(
-                                'Attempting to load from:',
-                                product.img
-                            );
+                            // console.log(
+                            //     'Attempting to load from:',
+                            //     item.imgUrl
+                            // );
                             // console.log(
                             //     'Resolved URL:',
-                            //     new URL(product.img, window.location.href).href
+                            //     new URL(item.img, window.location.href).href
                             // );
                             // Configure texture properties
                             texture.encoding = THREE.sRGBEncoding;
@@ -309,7 +320,7 @@ objectLoader.load('./group.json', (obj) => {
                             });
 
                             // Force update
-                            child.userData = { ...product };
+                            child.userData = { ...item };
                             child.material.needsUpdate = true;
                         },
                         undefined,
