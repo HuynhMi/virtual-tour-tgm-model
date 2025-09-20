@@ -59,6 +59,133 @@ const products = [
         img: './assets/images/9.webp',
     },
 ];
+
+const ACTION1 = 'SHOW SLIDER';
+const ACTION2 = 'SHOW MODAL';
+
+const BUTTON1 = 'Explore Full Report';
+const BUTTON2 = 'Read full story';
+
+const consumerSnapshot = [
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/1.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/2.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/3.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/4.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/5.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/6.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/7.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/8.jpg',
+    },
+];
+
+const employeeStories = [
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/3.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/4.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/5.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/6.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/7.jpg',
+    },
+];
+
+const tgmMoments = [
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/2.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/3.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/4.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/5.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/6.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/7.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/8.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/9.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/10.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com',
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/11.jpg',
+    },
+];
+
+const presents = [
+    {
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/infographics/1.jpg',
+        action: [ACTION2],
+    },
+    {
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/1.jpg',
+        action: [ACTION1, ACTION2],
+        items: tgmMoments,
+    },
+    {
+        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/2.jpg',
+        action: [ACTION1, ACTION2],
+        items: employeeStories,
+    },
+    ...consumerSnapshot.map((it) => ({ ...it, action: [ACTION2] })),
+];
+
+console.log('presents', presents);
 console.log('products');
 //create scene, camera, renderer
 const scene = new THREE.Scene();
@@ -212,7 +339,7 @@ window.addEventListener('click', (event) => {
         // console.log(123);
         console.log(intersect.object.userData.name);
         updateModalContainer(intersect.object.userData);
-        handleActiveSlideFromIntersect(intersect.object.userData);
+        // handleActiveSlideFromIntersect(intersect.object.userData);
         // handleDelayIntervalAutoChangingSlide();
         // Add your interaction logic here
     });
@@ -224,34 +351,6 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
-
-// let isAutoChaningSlide = true;
-// setInterval(function () {
-//     console.log(isAutoChaningSlide);
-//     if (isAutoChaningSlide) {
-//         handleNext();
-//     }
-// }, 4000);
-
-function handleDelayIntervalAutoChangingSlide() {
-    isAutoChaningSlide = false;
-    console.log(isAutoChaningSlide);
-    setTimeout(function () {
-        isAutoChaningSlide = true;
-    }, 10000);
-}
-function handleActiveSlideFromIntersect(data) {
-    const { name } = data;
-    console.log(name);
-
-    slides.forEach((it, idx) => {
-        const nameStr = it.getAttribute('data-product-name');
-        if (nameStr == name) {
-            currentSlide = idx;
-            updateSlideActive(idx);
-        }
-    });
-}
 
 function toggleModal(condition) {
     const modal = document.getElementById('modal');
@@ -287,85 +386,30 @@ function updateModalContainer(item) {
     `;
 }
 
-/**Handle slider */
-let currentSlide = 0;
-let slides = [];
-const slider = document.getElementById('slider');
-goToCenter();
-function goToCenter() {
-    const btn = document.getElementById('model-center');
-    if (btn) {
-        btn.addEventListener('click', function () {
-            camera.position.set(-3, 1.4, 7.2);
-            camera.rotation.set(0, 0, 0);
-            camera.lookAt(0, 0, 0);
-        });
-    }
-}
-function handleNext() {
-    const total_slide = slides.length;
-    currentSlide = currentSlide >= total_slide - 1 ? 0 : currentSlide + 1;
-    updateSlideActive(currentSlide, true);
-}
+document.addEventListener('keydown', onKeyDown);
 
-function handlePrevious() {
-    const total_slide = slides.length;
-    currentSlide = currentSlide == 0 ? total_slide - 1 : currentSlide - 1;
-    updateSlideActive(currentSlide, true);
-}
-
-function updateSlideActive(index, isScrolling = false) {
-    slides.forEach((it, idx) => {
-        it.classList.toggle('active', idx === index);
-        if (idx === index) {
-            if (isScrolling) {
-                it.scrollIntoView({ behavior: 'smooth', top: '800px' });
-            }
-            const productName = it.getAttribute('data-product-name');
-            focusOnProduct(productName);
-        }
-    });
-}
-
-function renderSlider() {
-    const html = products
-        .map(
-            (it) => `<div class="slider-item" data-product-name="${it.name}">
-                        <img src="${it.img}" alt height="100" />
-                    </div>`
-        )
-        .join('');
-    slider.innerHTML = html;
-    slides = document.querySelectorAll('.slider-item');
-    slides.forEach((item, idx) => {
-        item.addEventListener('click', () => {
-            const productName = item.getAttribute('data-product-name');
-            focusOnProduct(productName);
-            // handleDelayIntervalAutoChangingSlide();
-        });
-    });
-}
-
-function enableChangeSlider() {
-    const btnNext = document.getElementById('slider-btn-next');
-    if (btnNext) {
-        btnNext.addEventListener('click', () => {
-            // handleDelayIntervalAutoChangingSlide();
-            handleNext();
-        });
-    }
-    const btnPre = document.getElementById('slider-btn-pre');
-    if (btnPre) {
-        btnPre.addEventListener('click', () => {
-            // handleDelayIntervalAutoChangingSlide();
-            handlePrevious();
-        });
+function onKeyDown(e) {
+    let keyCode = e.which;
+    // alert(keyCode);
+    const moveAmount = 0.5;
+    switch (keyCode) {
+        //right arrow key
+        case 39:
+            camera.position.x += moveAmount;
+            break;
+        //left arrow key
+        case 37:
+            camera.position.x -= moveAmount;
+            break;
+        case 40:
+            camera.position.y -= moveAmount;
+            break;
+        case 38:
+            camera.position.y += moveAmount;
+            break;
     }
 }
 
-renderSlider();
-updateSlideActive(currentSlide);
-enableChangeSlider();
 const listPos = {
     'Item 1': {
         x: 3.3,
@@ -413,7 +457,7 @@ const listPos = {
         z: -2.83,
     },
 };
-function focusOnProduct(productName) {
+function handleFlyTo3DItem(productName) {
     const targetObject = interactiveObjects.find(
         (obj) => obj.name === productName
     );
@@ -479,49 +523,69 @@ function focusOnProduct(productName) {
     });
 }
 
-document.addEventListener('keydown', onKeyDown);
-
-function onKeyDown(e) {
-    let keyCode = e.which;
-    // alert(keyCode);
-    const moveAmount = 0.5;
-    switch (keyCode) {
-        //right arrow key
-        case 39:
-            camera.position.x += moveAmount;
-            break;
-        //left arrow key
-        case 37:
-            camera.position.x -= moveAmount;
-            break;
-        case 40:
-            camera.position.y -= moveAmount;
-            break;
-        case 38:
-            camera.position.y += moveAmount;
-            break;
-    }
+function enableAuFlyIn3D() {
+    products.forEach((it, idx) => {
+        setTimeout(function () {
+            handleFlyTo3DItem(it.name);
+        }, idx * 3000);
+    });
+    setInterval(function () {
+        products.forEach((it, idx) => {
+            setTimeout(function () {
+                handleFlyTo3DItem(it.name);
+            }, idx * 3000);
+        });
+    }, products.length * 3000);
 }
 
-let isAutoChaningSlide = false;
-setInterval(function () {
-    if (isAutoChaningSlide) {
-        handleNext();
-    }
-}, 4000);
-enableRunSliderAuto();
+class Virtual3D {}
 
-function enableRunSliderAuto() {
-    const btn = document.getElementById('auto-slider');
-    if (btn) {
-        btn.addEventListener('click', function () {
-            const disabled = btn.classList.contains('disabled');
-            btn.classList.toggle('disabled', !disabled);
-            if (disabled) {
-                isAutoChaningSlide = true;
-            } else {
-                isAutoChaningSlide = false;
-            }
+//SLIDER
+/*
+UI
+next, previous
+show
+*/
+/*
+    slider-wrapper -> slider -> slide
+    btn-next
+    btn-pre
+*/
+
+class Slider {
+    constructor(selector) {
+        this.slider = document.querySelector(`${selector} .slider`);
+        this.current_slide = 1;
+        this.slides = [...this.slider.querySelectorAll('.slide')];
+        this.totalSlides = this.slides.length;
+        this.btnNext = document.querySelector(`${selector} .btn-next`);
+        this.btnPre = document.querySelector(`${selector} .btn-pre`);
+
+        this.init();
+    }
+
+    init() {
+        this.btnNext.addEventListener('click', () => {
+            this.next();
+            this.handleTransform();
+        });
+        this.btnPre.addEventListener('click', () => {
+            this.pre();
+            this.handleTransform();
         });
     }
+
+    next() {
+        this.current_slide =
+            this.current_slide == this.totalSlides ? 1 : this.current_slide + 1;
+    }
+    pre() {
+        this.current_slide =
+            this.current_slide == 1 ? this.totalSlides : this.current_slide - 1;
+    }
+
+    handleTransform() {
+        this.slides[this.current_slide - 1].scrollIntoView();
+    }
 }
+const slider1 = new Slider('#slider-wrapper');
