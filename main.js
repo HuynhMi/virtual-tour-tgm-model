@@ -548,10 +548,7 @@ class Slider {
     constructor(id, data, selectorAppend, type = SLIDER_TYPE_1) {
         this.id = id;
         this.type = type;
-        this.node =
-            this.type == SLIDER_TYPE_2
-                ? this.createHTMLThumnail()
-                : this.createHTML();
+        this.node = this.createHTML();
         //after append, we can select selectors below step
         this.appendSliderTo(selectorAppend);
         this.sliderWrapper = document.querySelector(`#${id}`);
@@ -572,18 +569,18 @@ class Slider {
         this.btnNext.addEventListener('click', () => {
             this.next();
             this.handleTransform();
-            this.updateThumnailSlide(this.data[this.current_slide - 1].imgUrl);
+            this.updateThumnailSlide(this.data[this.current_slide - 1]);
         });
         this.btnPre.addEventListener('click', () => {
             this.pre();
             this.handleTransform();
-            this.updateThumnailSlide(this.data[this.current_slide - 1].imgUrl);
+            this.updateThumnailSlide(this.data[this.current_slide - 1]);
         });
         this.slides.forEach((slide, idx) =>
             slide.addEventListener('click', () => {
                 //update active slide
                 this.current_slide = idx + 1;
-                this.updateThumnailSlide(this.data[idx].imgUrl);
+                this.updateThumnailSlide(this.data[idx]);
             })
         );
     }
@@ -599,7 +596,7 @@ class Slider {
         );
         console.log('this.slider', this.slider);
         this.slider.innerHTML = html.join();
-        this.updateThumnailSlide(this.data[0].imgUrl);
+        this.updateThumnailSlide(this.data[0]);
     }
 
     next() {
@@ -622,53 +619,10 @@ class Slider {
 
     createHTML() {
         const div = document.createElement('div');
-        div.setAttribute('class', 'slider-wrapper');
-        div.setAttribute('id', this.id);
-        div.innerHTML = `
-            <div class="slider-wrapper__inner">
-                    <div class="slider">
-                        <!-- <div class="slide">
-                    <img src="./assets/images/1.webp" alt width="200" />
-                </div> -->
-                    </div>
-                </div>
-                <button class="btn-pre">
-                    <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        stroke-width="0"
-                        viewBox="0 0 320 512"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
-                        ></path>
-                    </svg>
-                </button>
-                <button class="btn-next">
-                    <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        stroke-width="0"
-                        viewBox="0 0 320 512"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
-                        ></path>
-                    </svg>
-                </button>
-        `;
-        return div;
-    }
-
-    createHTMLThumnail() {
-        const div = document.createElement('div');
-        div.setAttribute('class', 'slider-wrapper');
+        div.setAttribute(
+            'class',
+            `slider-wrapper ${this.type == SLIDER_TYPE_2 && 'thumnail'}`
+        );
         div.setAttribute('id', this.id);
         div.innerHTML = `
             <div class="main-slide"></div>
@@ -710,22 +664,23 @@ class Slider {
                     </svg>
                 </button>
         `;
-
         return div;
     }
 
-    updateThumnailSlide(imgUrl) {
+    updateThumnailSlide({ imgUrl, link }) {
         if (this.type == SLIDER_TYPE_2) {
-            this.sliderWrapper.querySelector(
-                '.main-slide'
-            ).innerHTML = `<img src="${imgUrl}" alt  />`;
+            this.sliderWrapper.querySelector('.main-slide').innerHTML = `<div>
+                <img src="${imgUrl}" alt  />
+                ${
+                    link &&
+                    `<a href="${link}" class="explore-link secondary">${BUTTON2}</a>`
+                }
+            </div>`;
         }
     }
 
     appendSliderTo(selectorAppend) {
-        console.log(12344);
         const el = document.querySelector(`${selectorAppend}`);
-        console.log(el);
         if (el) {
             el.append(this.node);
         }
@@ -793,23 +748,28 @@ const momensSlider = new Slider(
     '#momensModal .modal-container',
     SLIDER_TYPE_2
 );
-// const employeeStoriesSlider = new Slider(
-//     'mainSlider',
-//     employeeStories,
-//     '#employeeStoriesModal .modal-container'
-// );
+const employeeStoriesSlider = new Slider(
+    'employeeStoriesSlider',
+    employeeStories,
+    '#employeeStoriesModal .modal-container',
+    SLIDER_TYPE_2
+);
 
 const mainSlides = [...document.querySelectorAll('#mainSlider .slide')];
 mainSlides.forEach((el, idx) => {
     el.addEventListener('click', function () {
         mainModal.close();
         momensModal.close();
+        employeeStoriesModal.close();
 
         const { imgUrl, action, link } = presents[idx];
         if (imgUrl) {
             let html = '';
             if (action == ACTION1) {
                 momensModal.open();
+            }
+            if (action == ACTION3) {
+                employeeStoriesModal.open();
             }
             if (action == ACTION2) {
                 if (link) {
