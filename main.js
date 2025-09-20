@@ -553,8 +553,11 @@ show
 */
 
 class Slider {
-    constructor(selector) {
+    constructor(selector, data) {
         this.slider = document.querySelector(`${selector} .slider`);
+        this.data = data || [];
+        console.log('data', data);
+        this.appendChild();
         this.current_slide = 1;
         this.slides = [...this.slider.querySelectorAll('.slide')];
         this.totalSlides = this.slides.length;
@@ -575,6 +578,16 @@ class Slider {
         });
     }
 
+    appendChild() {
+        this.data = this.data.map(
+            (it) => `
+                <div class="slider-item slide">
+                    <img src="${it.imgUrl}" alt width="200" />
+                </div>
+            `
+        );
+        this.slider.innerHTML = this.data.join();
+    }
     next() {
         this.current_slide =
             this.current_slide == this.totalSlides ? 1 : this.current_slide + 1;
@@ -585,7 +598,14 @@ class Slider {
     }
 
     handleTransform() {
-        this.slides[this.current_slide - 1].scrollIntoView();
+        this.slides[this.current_slide - 1].scrollIntoView({
+            behavior: 'smooth',
+        });
+        this.slides.forEach((it, idx) => {
+            it.classList.toggle('active', idx == this.current_slide - 1);
+        });
     }
 }
-const slider1 = new Slider('#slider-wrapper');
+const slider1 = new Slider('#mainSlider', presents);
+const slider2 = new Slider('#tgmMomentsSlider', tgmMoments);
+const slider3 = new Slider('#employeeStoriesSlider', employeeStories);
