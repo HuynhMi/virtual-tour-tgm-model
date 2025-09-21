@@ -15,126 +15,126 @@ let slides = [];
 const consumerSnapshot = [
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/1.jpg',
+        imgUrl: './images/library/8th-anniversary/consumer-snapshot/1.jpg',
         name: 'Item 4',
     },
     {
         name: 'Item 5',
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/2.jpg',
+        imgUrl: './images/library/8th-anniversary/consumer-snapshot/2.jpg',
     },
     {
         name: 'Item 6',
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/3.jpg',
+        imgUrl: './images/library/8th-anniversary/consumer-snapshot/3.jpg',
     },
     {
         name: 'Item 7',
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/4.jpg',
+        imgUrl: './images/library/8th-anniversary/consumer-snapshot/4.jpg',
     },
     {
         name: 'Item 8',
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/5.jpg',
+        imgUrl: './images/library/8th-anniversary/consumer-snapshot/5.jpg',
     },
     {
         name: 'Item 9',
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/6.jpg',
+        imgUrl: './images/library/8th-anniversary/consumer-snapshot/6.jpg',
     },
     {
         name: 'Item 10',
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/7.jpg',
+        imgUrl: './images/library/8th-anniversary/consumer-snapshot/7.jpg',
     },
     {
         name: 'Item 2',
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/8.jpg',
+        imgUrl: './images/library/8th-anniversary/consumer-snapshot/8.jpg',
     },
 ];
 
 const employeeStories = [
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/employee-stories/3.jpg',
+        imgUrl: './images/library/8th-anniversary/employee-stories/3.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/employee-stories/4.jpg',
+        imgUrl: './images/library/8th-anniversary/employee-stories/4.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/employee-stories/5.jpg',
+        imgUrl: './images/library/8th-anniversary/employee-stories/5.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/employee-stories/6.jpg',
+        imgUrl: './images/library/8th-anniversary/employee-stories/6.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/employee-stories/7.jpg',
+        imgUrl: './images/library/8th-anniversary/employee-stories/7.jpg',
     },
 ];
 
 const tgmMoments = [
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/2.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/2.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/3.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/3.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/4.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/4.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/5.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/5.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/6.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/6.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/7.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/7.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/8.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/8.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/9.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/9.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/10.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/10.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/11.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/11.jpg',
     },
 ];
 
 const presents = [
     {
         name: 'Item 1',
-        imgUrl: '/images/library/8th-anniversary/infographics/1.jpg',
+        imgUrl: './images/library/8th-anniversary/infographics/1.jpg',
         action: ACTION2,
     },
     {
-        imgUrl: '/images/library/8th-anniversary/tgm-moments/1.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/1.jpg',
         action: ACTION1,
         items: tgmMoments,
         name: 'Item 11',
     },
     {
-        imgUrl: '/images/library/8th-anniversary/employee-stories/2.jpg',
+        imgUrl: './images/library/8th-anniversary/employee-stories/2.jpg',
         action: ACTION3,
         items: employeeStories,
         name: 'Item 3',
