@@ -41,7 +41,7 @@
                 opacity: 0;
                 display: flex;
                 justify-content: center;
-                padding: 80px 20px 0px;
+                padding: 20px 20px 0px;
                 transition: all ease-in-out 0.3s;
             }
             .modal-inner {
@@ -55,12 +55,11 @@
                 margin-left: auto;
                 margin-right: auto;
                 position: relative;
-                padding-top: 35px;
-                max-height: 60vh;
-                max-width: 1000px;
+                /* padding-top: 35px; */
+                /* max-height: 60vh; */
+                max-width: 80%;
             }
             .modal-inner img {
-                height: 100%;
                 aspect-ratio: auto 573 / 322;
                 border-radius: 8px;
                 opacity: 1;
@@ -83,6 +82,7 @@
                 text-align: center;
                 display: flex;
                 flex-direction: column;
+                max-height: 61vh;
             }
             @media (max-width: 540px) {
                 .modal-inner {
@@ -103,7 +103,7 @@
                 text-decoration: underline;
                 position: absolute;
                 right: 10px;
-                top: 5px;
+                top: -10px;
                 cursor: pointer;
                 transition: all linear 0.2s;
             }
@@ -132,6 +132,7 @@
                 background-color: #fff;
                 padding: 20px;
                 border-radius: 8px;
+                box-sizing: border-box;
             }
             .slider-wrapper.slider-wrapper.thumnail .slider-wrapper__inner {
                 padding-top: 20px;
@@ -180,7 +181,7 @@
                 content: '';
                 position: absolute;
                 inset: 0;
-                border: 2px solid #ccc;
+                border-bottom: 5px solid #d41d51;
             }
             .btn-next,
             .btn-pre {
@@ -190,8 +191,8 @@
                 background: unset;
                 border: unset;
                 transition: all linear 0.2s;
-                height: 60px;
-                width: 60px;
+                height: 50px;
+                width: 50px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -264,6 +265,27 @@
             .explore-link:hover {
                 color: #d41d51;
             }
+
+            .modal-inner {
+                max-width: 50%;
+            }
+
+            @media (min-height: 1024px) {
+                .modal-inner img {
+                    width: 100%;
+                    object-fit: contain;
+                    height: unset;
+                }
+
+                .modal-wrapper {
+                    align-items: center;
+                }
+            }
+            @media (max-width: 540px) {
+                .modal-inner {
+                    max-width: 100%;
+                }
+            }
         </style>
     </head>
     <body>
@@ -283,7 +305,7 @@
                 ></path>
             </svg>
         </button>
-        <button id="auto-slider" class="disabled">Enable slider auto</button>
+        <!-- <button id="auto-slider" class="disabled">Enable slider auto</button> -->
         <!-- <div id="modal">
             <div id="modal-container"></div>
             <button class="modal-close">x</button>

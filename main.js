@@ -2,63 +2,6 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/GLTFLoader';
 import { OrbitControls } from 'three/OrbitControls';
 import { RGBELoader } from 'three/RGBELoader';
-const products = [
-    {
-        name: 'Item 1',
-        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
-        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './assets/images/1.webp',
-    },
-    {
-        name: 'Item 2',
-        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
-        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './assets/images/2.webp',
-    },
-    {
-        name: 'Item 3',
-        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
-        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './assets/images/3.webp',
-    },
-    {
-        name: 'Item 4',
-        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
-        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './assets/images/4.webp',
-    },
-    {
-        name: 'Item 5',
-        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
-        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './assets/images/5.webp',
-    },
-    {
-        name: 'Item 6',
-        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
-        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './assets/images/6.webp',
-    },
-    {
-        name: 'Item 7',
-        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
-        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './assets/images/7.webp',
-    },
-    {
-        name: 'Item 8',
-        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
-        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        img: './assets/images/8.webp',
-    },
-    {
-        name: 'Item 9',
-        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia.',
-        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisapiente alias mollitia. Dolore libero ea cum, neque quo laboresint eveniet minus, possimus sed maxime corrupti perferendis suscipit eum exercitationem?',
-        video: './assets/images/dynamic-charting.mp4',
-        img: './assets/images/9.webp',
-    },
-];
 
 const ACTION1 = 'SHOW MODAL WITH MOMENTS SLIDER ';
 const ACTION2 = 'SHOW MODAL';
@@ -67,129 +10,131 @@ const ACTION3 = 'SHOW MODAL WITH STORIES SLIDER';
 const BUTTON1 = 'Explore Full Report';
 const BUTTON2 = 'Read full story';
 
+let slides = [];
+
 const consumerSnapshot = [
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/1.jpg',
+        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/1.jpg',
         name: 'Item 4',
     },
     {
         name: 'Item 5',
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/2.jpg',
+        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/2.jpg',
     },
     {
         name: 'Item 6',
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/3.jpg',
+        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/3.jpg',
     },
     {
         name: 'Item 7',
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/4.jpg',
+        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/4.jpg',
     },
     {
         name: 'Item 8',
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/5.jpg',
+        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/5.jpg',
     },
     {
         name: 'Item 9',
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/6.jpg',
+        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/6.jpg',
     },
     {
         name: 'Item 10',
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/7.jpg',
+        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/7.jpg',
     },
     {
-        name: 'Item 11',
+        name: 'Item 2',
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/consumer-snapshot/8.jpg',
+        imgUrl: '/images/library/8th-anniversary/consumer-snapshot/8.jpg',
     },
 ];
 
 const employeeStories = [
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/3.jpg',
+        imgUrl: '/images/library/8th-anniversary/employee-stories/3.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/4.jpg',
+        imgUrl: '/images/library/8th-anniversary/employee-stories/4.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/5.jpg',
+        imgUrl: '/images/library/8th-anniversary/employee-stories/5.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/6.jpg',
+        imgUrl: '/images/library/8th-anniversary/employee-stories/6.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/7.jpg',
+        imgUrl: '/images/library/8th-anniversary/employee-stories/7.jpg',
     },
 ];
 
 const tgmMoments = [
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/2.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/2.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/3.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/3.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/4.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/4.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/5.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/5.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/6.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/6.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/7.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/7.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/8.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/8.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/9.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/9.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/10.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/10.jpg',
     },
     {
         link: 'https://tgmresearch.com',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/11.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/11.jpg',
     },
 ];
 
 const presents = [
     {
         name: 'Item 1',
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/infographics/1.jpg',
+        imgUrl: '/images/library/8th-anniversary/infographics/1.jpg',
         action: ACTION2,
     },
     {
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/tgm-moments/1.jpg',
+        imgUrl: '/images/library/8th-anniversary/tgm-moments/1.jpg',
         action: ACTION1,
         items: tgmMoments,
-        name: 'Item 2',
+        name: 'Item 11',
     },
     {
-        imgUrl: 'https://tgmresearch.com/images/library/8th-anniversary/employee-stories/2.jpg',
+        imgUrl: '/images/library/8th-anniversary/employee-stories/2.jpg',
         action: ACTION3,
         items: employeeStories,
         name: 'Item 3',
@@ -197,8 +142,6 @@ const presents = [
     ...consumerSnapshot.map((it) => ({ ...it, action: ACTION2 })),
 ];
 
-console.log('presents', presents);
-console.log('products');
 //create scene, camera, renderer
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xaaaaaa);
@@ -271,12 +214,6 @@ function animate() {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
-    // console.log(camera.position);
-    // document.getElementById('log').innerHTML = `
-    //     <div>${camera.position.x}</div>
-    //     <div>${camera.position.y}</div>
-    //     <div>${camera.position.z}</div>
-    // `;
 }
 
 animate();
@@ -297,14 +234,6 @@ objectLoader.load('./Group2.json', (obj) => {
                     textureLoader.load(
                         item.imgUrl,
                         (texture) => {
-                            // console.log(
-                            //     'Attempting to load from:',
-                            //     item.imgUrl
-                            // );
-                            // console.log(
-                            //     'Resolved URL:',
-                            //     new URL(item.img, window.location.href).href
-                            // );
                             // Configure texture properties
                             texture.encoding = THREE.sRGBEncoding;
                             texture.anisotropy =
@@ -343,17 +272,8 @@ window.addEventListener('click', (event) => {
 
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(interactiveObjects);
-    // console.log('intersects', intersects);
-    // toggleModal(intersects.length > 0);
     intersects.forEach((intersect) => {
-        // console.log(`Clicked ${intersect.object.name}`);
-        // console.log(intersect.object);
-        // console.log(123);
-        console.log(intersect.object.userData.name);
         updateModalContainer(intersect.object.userData);
-        // handleActiveSlideFromIntersect(intersect.object.userData);
-        // handleDelayIntervalAutoChangingSlide();
-        // Add your interaction logic here
     });
 });
 
@@ -366,29 +286,39 @@ window.addEventListener('resize', () => {
 
 function updateModalContainer(item) {
     const container = document.getElementById('modal-container');
-    if (!modal || !container) return;
+    const { name } = item;
+    if (slides.length == 0) {
+        slides = document.querySelectorAll('#mainSlider .slide');
+    }
+    const clicked_slide_name = slides.filter(
+        (slide) => slide.getAttribute('data-name') == name
+    )[0];
 
-    container.innerHTML = `
-        <div class="title">
-            ${item.title}
-        </div>
-        <p class="content">
-            ${item.desc}
-        </p>
-        ${
-            item.video
-                ? `<video width="400" controls>
-                    <source src="${item.video}" type="video/mp4">
-                    </video>`
-                : `<img src="${item.img}" alt width="150" height="50"/>`
-        }
-       
-    `;
+    clicked_slide_name.click();
+    // if (!modal || !container) return;
+
+    // container.innerHTML = `
+    //     <div class="title">
+    //         ${item.title}
+    //     </div>
+    //     <p class="content">
+    //         ${item.desc}
+    //     </p>
+    //     ${
+    //         item.video
+    //             ? `<video width="400" controls>
+    //                 <source src="${item.video}" type="video/mp4">
+    //                 </video>`
+    //             : `<img src="${item.img}" alt width="150" height="50"/>`
+    //     }
+
+    // `;
 }
 
 document.addEventListener('keydown', onKeyDown);
 
 function onKeyDown(e) {
+    disabledAutoFlyIn3D();
     let keyCode = e.which;
     // alert(keyCode);
     const moveAmount = 0.5;
@@ -522,20 +452,30 @@ function handleFlyTo3DItem(productName) {
         },
     });
 }
-
-function enableAuFlyIn3D() {
-    products.forEach((it, idx) => {
-        setTimeout(function () {
+let intervalTimer = null;
+let timeoutTimers = [];
+enableAutoFlyIn3D();
+function enableAutoFlyIn3D() {
+    presents.forEach((it, idx) => {
+        const timer = setTimeout(function () {
             handleFlyTo3DItem(it.name);
         }, idx * 3000);
+        timeoutTimers.push(timer);
     });
-    setInterval(function () {
-        products.forEach((it, idx) => {
-            setTimeout(function () {
+    intervalTimer = setInterval(function () {
+        presents.forEach((it, idx) => {
+            const timer = setTimeout(function () {
                 handleFlyTo3DItem(it.name);
             }, idx * 3000);
+            timeoutTimers.push(timer);
         });
-    }, products.length * 3000);
+    }, presents.length * 3000);
+}
+
+function disabledAutoFlyIn3D() {
+    clearInterval(intervalTimer);
+    timeoutTimers.forEach((timer) => clearTimeout(timer));
+    timeoutTimers = []; // Reset the array
 }
 
 class Virtual3D {}
@@ -565,10 +505,9 @@ class Slider {
         this.sliderWrapper = document.querySelector(`#${id}`);
         this.slider = document.querySelector(`#${id} .slider`);
         this.data = data || [];
-        console.log('data', data);
         this.appendChild();
         this.current_slide = 1;
-        this.slides = [...this.slider.querySelectorAll('.slide')];
+        this.slides = this.getSlides();
         this.totalSlides = this.slides.length;
         this.btnNext = document.querySelector(`#${id} .btn-next`);
         this.btnPre = document.querySelector(`#${id} .btn-pre`);
@@ -576,6 +515,9 @@ class Slider {
         this.init();
     }
 
+    getSlides() {
+        return [...this.slider.querySelectorAll('.slide')];
+    }
     init() {
         this.btnNext.addEventListener('click', () => {
             this.next();
@@ -597,15 +539,15 @@ class Slider {
     }
 
     appendChild() {
-        console.log('appending');
         const html = this.data.map(
             (it) => `
-                <div class="slider-item slide">
-                    <img src="${it.imgUrl}" alt width="200" />
+                <div class="slider-item slide" ${
+                    it.name && `data-name="${it.name}"`
+                }>
+                    <img src="${it.imgUrl}"  width="200" />
                 </div>
             `
         );
-        console.log('this.slider', this.slider);
         this.slider.innerHTML = html.join();
         this.updateThumnailSlide(this.data[0]);
     }
@@ -684,7 +626,7 @@ class Slider {
                 <img src="${imgUrl}" alt  />
                 ${
                     link &&
-                    `<a href="${link}" class="explore-link secondary">${BUTTON2}</a>`
+                    `<a href="${link}" class="explore-link secondary" target="_blank">${BUTTON2}</a>`
                 }
             </div>`;
         }
@@ -706,7 +648,6 @@ class Slider {
 */
 class Modal {
     constructor(id, htmlInner = '', state = null) {
-        console.log('state', state);
         this.id = id;
         this.state = state;
         this.createHtml();
@@ -723,7 +664,7 @@ class Modal {
         div.setAttribute('id', this.id);
         div.innerHTML = `
             <div class="modal-inner">
-                <div class="modal-container">lorem...</div>
+                <div class="modal-container"></div>
                 <button class="modal-close">Close</button>
             </div>
         `;
@@ -766,8 +707,8 @@ const employeeStoriesSlider = new Slider(
     SLIDER_TYPE_2
 );
 
-const mainSlides = [...document.querySelectorAll('#mainSlider .slide')];
-mainSlides.forEach((el, idx) => {
+slides = presentSlider.getSlides();
+slides.forEach((el, idx) => {
     el.addEventListener('click', function () {
         mainModal.close();
         momensModal.close();
@@ -786,7 +727,7 @@ mainSlides.forEach((el, idx) => {
                 if (link) {
                     html = `
                     <img src="${imgUrl}" alt/>
-                    <a href="${link}" class="explore-link">${BUTTON1}</a>
+                    <a href="${link}" class="explore-link" target="_blank">${BUTTON1}</a>
                 `;
                 } else {
                     html = `<img src="${imgUrl}" alt/>`;
