@@ -548,7 +548,7 @@ class Slider {
                 </div>
             `
         );
-        this.slider.innerHTML = html.join();
+        this.slider.innerHTML = html.join(' ');
         this.updateThumnailSlide(this.data[0]);
     }
 
