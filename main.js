@@ -6,117 +6,134 @@ import { RGBELoader } from 'three/RGBELoader';
 const ACTION1 = 'SHOW MODAL WITH MOMENTS SLIDER ';
 const ACTION2 = 'SHOW MODAL';
 const ACTION3 = 'SHOW MODAL WITH STORIES SLIDER';
+const ACTION4 = 'SHOW MODAL WITH ESG SLIDER';
 
 const BUTTON1 = 'Explore Full Report';
 const BUTTON2 = 'Read full story';
 
+let virtualRunning = false;
+let virtualCanClick = true;
 let slides = [];
 
 const consumerSnapshot = [
     {
         link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/1.jpg',
-        name: 'Item 4',
     },
     {
-        name: 'Item 5',
         link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/2.jpg',
     },
     {
-        name: 'Item 6',
         link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/3.jpg',
     },
     {
-        name: 'Item 7',
         link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/4.jpg',
     },
+    // {
+    //     name: 'Item 8',
+    //     link: 'https://tgmresearch.com',
+    //     imgUrl: './images/library/8th-anniversary/consumer-snapshot/5.jpg',
+    // },
     {
-        name: 'Item 8',
-        link: 'https://tgmresearch.com',
-        imgUrl: './images/library/8th-anniversary/consumer-snapshot/5.jpg',
-    },
-    {
-        name: 'Item 9',
         link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/6.jpg',
     },
     {
-        name: 'Item 10',
         link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/7.jpg',
     },
-    {
-        name: 'Item 2',
-        link: 'https://tgmresearch.com',
-        imgUrl: './images/library/8th-anniversary/consumer-snapshot/8.jpg',
-    },
+    // {
+    //     name: 'Item 2',
+    //     link: 'https://tgmresearch.com',
+    //     imgUrl: './images/library/8th-anniversary/consumer-snapshot/8.jpg',
+    // },
 ];
 
+const esg = [
+    {
+        link: 'https://tgmresearch.com/about-us/esg-strategy.html',
+        imgUrl: './images/library/8th-anniversary/esg/3.jpg',
+        link_title: '',
+        alt: '',
+    },
+    {
+        link: 'https://tgmresearch.com/about-us/esg-strategy.html',
+        imgUrl: './images/library/8th-anniversary/esg/4.jpg',
+    },
+    {
+        name: 'Item 6',
+        link: 'https://tgmresearch.com/about-us/esg-strategy.html',
+        imgUrl: './images/library/8th-anniversary/esg/5.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com/about-us/esg-strategy.html',
+        imgUrl: './images/library/8th-anniversary/esg/6.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com/about-us/esg-strategy.html',
+        imgUrl: './images/library/8th-anniversary/esg/7.jpg',
+    },
+    {
+        link: 'https://tgmresearch.com/about-us/esg-strategy.html',
+        imgUrl: './images/library/8th-anniversary/esg/8.jpg',
+    },
+];
 const employeeStories = [
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/tgm-stories-emma-aghlamazyan.html',
         imgUrl: './images/library/8th-anniversary/employee-stories/3.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/tgm-stories-viet-nguyen.html',
         imgUrl: './images/library/8th-anniversary/employee-stories/4.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/tgm-stories-giorgos-chantzis.html',
         imgUrl: './images/library/8th-anniversary/employee-stories/5.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/tgm-stories-nhi-ho.html',
         imgUrl: './images/library/8th-anniversary/employee-stories/6.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/tgm-stories-aljon-llaguno.html',
         imgUrl: './images/library/8th-anniversary/employee-stories/7.jpg',
     },
 ];
 
 const tgmMoments = [
     {
-        link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/tgm-moments/2.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/tgm-moments/3.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/tgm-moments/4.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/tgm-moments/5.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/tgm-moments/6.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/tgm-step-up-and-give-a-hand.html',
         imgUrl: './images/library/8th-anniversary/tgm-moments/7.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/tgm-moments/8.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/tgm-moments/9.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/tgm-moments/10.jpg',
     },
     {
-        link: 'https://tgmresearch.com',
         imgUrl: './images/library/8th-anniversary/tgm-moments/11.jpg',
     },
 ];
@@ -137,9 +154,19 @@ const presents = [
         imgUrl: './images/library/8th-anniversary/employee-stories/2.jpg',
         action: ACTION3,
         items: employeeStories,
+        name: 'Item 2',
+    },
+    {
+        imgUrl: './images/library/8th-anniversary/esg/3.jpg',
+        action: ACTION4,
+        items: esg,
         name: 'Item 3',
     },
-    ...consumerSnapshot.map((it) => ({ ...it, action: ACTION2 })),
+    ...consumerSnapshot.map((it, idx) => ({
+        ...it,
+        action: ACTION2,
+        name: `Item ${idx + 4}`,
+    })),
 ];
 
 //create scene, camera, renderer
@@ -266,7 +293,8 @@ objectLoader.load('./Group2.json', (obj) => {
 const mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster();
 
-window.addEventListener('click', (event) => {
+const containerVirtual = document.getElementById('container');
+containerVirtual.addEventListener('click', (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -625,8 +653,9 @@ class Slider {
             this.sliderWrapper.querySelector('.main-slide').innerHTML = `<div>
                 <img src="${imgUrl}" alt  />
                 ${
-                    link &&
-                    `<a href="${link}" class="explore-link secondary" target="_blank">${BUTTON2}</a>`
+                    link
+                        ? `<a href="${link}" class="explore-link secondary" target="_blank">${BUTTON2}</a>`
+                        : ''
                 }
             </div>`;
         }
@@ -675,6 +704,14 @@ class Modal {
         this.modalEl.classList.remove('open');
     }
 
+    static closeAllModal() {
+        [...document.querySelectorAll('.modal-wrapper')].forEach((el) => {
+            if (!el.classList.contains('show')) {
+                el.classList.remove('show');
+            }
+        });
+    }
+
     open() {
         this.modalEl.classList.add('open');
     }
@@ -692,6 +729,7 @@ class Modal {
 const mainModal = new Modal('mainModal');
 const momensModal = new Modal('momensModal');
 const employeeStoriesModal = new Modal('employeeStoriesModal');
+const esgModal = new Modal('esgModal');
 
 const presentSlider = new Slider('mainSlider', presents, '.footer');
 const momensSlider = new Slider(
@@ -707,12 +745,21 @@ const employeeStoriesSlider = new Slider(
     SLIDER_TYPE_2
 );
 
+const esgSlider = new Slider(
+    'esgSlider',
+    esg,
+    '#esgModal .modal-container',
+    SLIDER_TYPE_2
+);
+
 slides = presentSlider.getSlides();
 slides.forEach((el, idx) => {
     el.addEventListener('click', function () {
         mainModal.close();
         momensModal.close();
         employeeStoriesModal.close();
+        esgModal.close();
+        // Modal.closeAllModal();
 
         const { imgUrl, action, link } = presents[idx];
         if (imgUrl) {
@@ -723,10 +770,13 @@ slides.forEach((el, idx) => {
             if (action == ACTION3) {
                 employeeStoriesModal.open();
             }
+            if (action == ACTION4) {
+                esgModal.open();
+            }
             if (action == ACTION2) {
                 if (link) {
                     html = `
-                    <img src="${imgUrl}" alt/>
+                    <img src="${imgUrl}"/>
                     <a href="${link}" class="explore-link" target="_blank">${BUTTON1}</a>
                 `;
                 } else {
@@ -735,6 +785,7 @@ slides.forEach((el, idx) => {
                 mainModal.setContainer(html);
                 mainModal.open();
             }
+            disabledAutoFlyIn3D();
         }
     });
 });
