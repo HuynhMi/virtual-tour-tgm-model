@@ -53,7 +53,7 @@
                 display: flex;
                 align-items: center;
                 /* bottom: 168px; */
-                padding-bottom: calc(var(--slide-height) + 20px);
+                padding-bottom: calc(var(--slide-height) + 45px);
             }
             .modal-inner {
                 /* background-color: #fff; */
@@ -103,6 +103,8 @@
                 flex-direction: column;
                 justify-content: center;
                 /* max-height: 61vh; */
+                position: relative;
+                z-index: 1;
             }
             @media (max-width: 540px) {
                 .modal-inner {
@@ -116,16 +118,19 @@
             }
 
             .modal-wrapper .modal-close {
-                background: unset;
                 border: unset;
                 font-size: 18px;
-                color: #fff;
+                color: #000;
                 text-decoration: underline;
                 position: absolute;
-                right: 10px;
-                top: -10px;
+                right: 0;
+                top: 0;
                 cursor: pointer;
                 transition: all linear 0.2s;
+                /* background: #ffffffbd; */
+                padding: 7px 11px;
+                border-radius: 8px;
+                z-index: 10;
             }
             .modal-wrapper .modal-close:hover {
                 transform: scale(1.1);
