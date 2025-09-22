@@ -30,6 +30,7 @@
         <style>
             :root {
                 --slide-height: 150px;
+                --slide-height-sm: 80px;
             }
             body {
                 padding: 0;
@@ -161,7 +162,6 @@
             }
             .slider-wrapper.slider-wrapper.thumnail .slider-wrapper__inner {
                 padding-top: 20px;
-                margin-top: 10px;
                 border-top: 2px solid #ccc;
             }
             .slider-wrapper__inner {
@@ -185,13 +185,17 @@
                 /* height: calc(var(--width) / 2); */
                 aspect-ratio: auto 573 / 322;
             }
+
+            .slider-wrapper.thumnail .slide {
+                height: var(--slide-height-sm);
+            }
             .slider-wrapper.thumnail {
                 height: 100%;
                 display: flex;
                 flex-direction: column;
             }
             .main-slide {
-                height: calc(100% - var(--slide-height) - 40px);
+                height: calc(100% - var(--slide-height-sm) - 40px);
             }
             .main-slide > div {
                 display: flex;
@@ -319,6 +323,7 @@
             @media (max-width: 540px) {
                 :root {
                     --slide-height: 100px;
+                    --slide-height: 50px;
                 }
                 .explore-link {
                     font-size: 16px;
