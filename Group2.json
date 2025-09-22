@@ -96,16 +96,6 @@
 			"depthSegments": 1
 		},
 		{
-			"uuid": "7f05de94-deab-4e32-96d6-d9ed472e4afb",
-			"type": "BoxGeometry",
-			"width": 1.777,
-			"height": 1,
-			"depth": 0.5,
-			"widthSegments": 1,
-			"heightSegments": 1,
-			"depthSegments": 1
-		},
-		{
 			"uuid": "e14b89e7-c27a-447d-8cc8-8abc99fb3f0d",
 			"type": "BoxGeometry",
 			"width": 1.777,
@@ -225,18 +215,6 @@
 			"blendColor": 0
 		},
 		{
-			"uuid": "4ce78e9c-0832-42bd-9e17-2e8e64d33a81",
-			"type": "MeshStandardMaterial",
-			"color": 16777215,
-			"roughness": 1,
-			"metalness": 0,
-			"emissive": 0,
-			"envMapRotation": [0,0,0,
-				"XYZ"],
-			"envMapIntensity": 1,
-			"blendColor": 0
-		},
-		{
 			"uuid": "8ed2a802-76ca-46d5-b0e4-6aefb752d461",
 			"type": "MeshStandardMaterial",
 			"color": 16777215,
@@ -261,7 +239,7 @@
 				"type": "Mesh",
 				"name": "Item 1",
 				"layers": 1,
-				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,3.5581073302767274,0.46651066922486284,-5.015796239931736,1],
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,3.5581073302767274,0.503480391640944,-5.015796239931736,1],
 				"up": [0,1,0],
 				"geometry": "981b4534-8de2-4df6-89a5-4606b18c87a9",
 				"material": "8076769f-b3f9-43a5-a7c2-5a69b238ab95"
@@ -271,7 +249,7 @@
 				"type": "Mesh",
 				"name": "Item 2",
 				"layers": 1,
-				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,1.2540764072720116,0.5281357019178285,-4.944300860637793,1],
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0.5122423788612211,0.6745906525079692,-4.944300860637793,1],
 				"up": [0,1,0],
 				"geometry": "63fae376-5657-4983-9928-d4b8277fd5af",
 				"material": "e5a37d52-c28d-4991-b914-d8beded42540"
@@ -281,7 +259,7 @@
 				"type": "Mesh",
 				"name": "Item 3",
 				"layers": 1,
-				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-1.035061561261097,0.5384198271031111,-4.961437013496742,1],
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-2.6747947519515627,0.6664023722880732,-4.713101216291455,1],
 				"up": [0,1,0],
 				"geometry": "8b93444a-589b-42d3-9656-12d27f6c633e",
 				"material": "bb0e5e23-8dee-4723-a573-699335ea22ab"
@@ -345,16 +323,6 @@
 				"up": [0,1,0],
 				"geometry": "26bdf03c-9bd4-43db-b8d9-eb1b9df7050e",
 				"material": "9c540a24-b139-406a-a3ec-5cde7f8b780b"
-			},
-			{
-				"uuid": "d8c04963-34d1-4578-885b-fddff5c3975d",
-				"type": "Mesh",
-				"name": "Item 10",
-				"layers": 1,
-				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-3.3515237626050127,0.5729256975018311,-4.947142002197141,1],
-				"up": [0,1,0],
-				"geometry": "7f05de94-deab-4e32-96d6-d9ed472e4afb",
-				"material": "4ce78e9c-0832-42bd-9e17-2e8e64d33a81"
 			},
 			{
 				"uuid": "7cedd430-5ee6-4b7e-83ff-87af5d2658fe",
