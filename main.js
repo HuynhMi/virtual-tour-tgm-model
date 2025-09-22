@@ -17,38 +17,52 @@ let slides = [];
 
 const consumerSnapshot = [
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/vietnam-e-commerce-insights-2025.html',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/1.jpg',
+        title: "Vietnam's ecommerce snapshot 2025",
+        link_text: BUTTON1,
     },
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/global-travel-insights-2025.html',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/2.jpg',
+        title: 'Global Traveler Snapshot 2025',
+        link_text: BUTTON1,
     },
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/global-sustainability-insights-2024.html',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/3.jpg',
+        title: 'Global Sustainability Snapshot 2024',
+        link_text: BUTTON1,
     },
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/ride-hailing-consumer-insights-2024.html',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/4.jpg',
+        title: 'Global Ride-hailing snapshot 2024',
+        link_text: BUTTON1,
     },
-    // {
-    //     name: 'Item 8',
-    //     link: 'https://tgmresearch.com',
-    //     imgUrl: './images/library/8th-anniversary/consumer-snapshot/5.jpg',
-    // },
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/global-crypto-insights-2024.html',
+        imgUrl: './images/library/8th-anniversary/consumer-snapshot/5.jpg',
+        title: 'Global Crypto Currency snapshot 2024',
+        link_text: BUTTON1,
+    },
+    {
+        link: 'https://tgmresearch.com/food-delivery-consumer-insights-2024.html',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/6.jpg',
+        title: 'Global Food Delivery snapshot 2024',
+        link_text: BUTTON1,
     },
     {
-        link: 'https://tgmresearch.com',
+        link: 'https://tgmresearch.com/pet-care-insights-2024.html',
         imgUrl: './images/library/8th-anniversary/consumer-snapshot/7.jpg',
+        title: 'Global Pet care spotlight 2024',
+        link_text: BUTTON1,
     },
     // {
     //     name: 'Item 2',
     //     link: 'https://tgmresearch.com',
     //     imgUrl: './images/library/8th-anniversary/consumer-snapshot/8.jpg',
+    //       title: 'Gambling..'
     // },
 ];
 
@@ -56,85 +70,115 @@ const esg = [
     {
         link: 'https://tgmresearch.com/about-us/esg-strategy.html',
         imgUrl: './images/library/8th-anniversary/esg/3.jpg',
-        link_title: '',
-        alt: '',
+        link_text: BUTTON1,
+        title: 'TGM Research Driving Sustainable Change with Consumer Insights',
     },
     {
         link: 'https://tgmresearch.com/about-us/esg-strategy.html',
         imgUrl: './images/library/8th-anniversary/esg/4.jpg',
+        link_text: BUTTON1,
+        title: 'TGM Research Driving Sustainable Change with Consumer Insights',
     },
     {
-        name: 'Item 6',
         link: 'https://tgmresearch.com/about-us/esg-strategy.html',
         imgUrl: './images/library/8th-anniversary/esg/5.jpg',
+        link_text: BUTTON1,
+        title: 'TGM Research Driving Sustainable Change with Consumer Insights',
     },
     {
         link: 'https://tgmresearch.com/about-us/esg-strategy.html',
         imgUrl: './images/library/8th-anniversary/esg/6.jpg',
+        link_text: BUTTON1,
+        title: 'TGM Research Driving Sustainable Change with Consumer Insights',
     },
     {
         link: 'https://tgmresearch.com/about-us/esg-strategy.html',
         imgUrl: './images/library/8th-anniversary/esg/7.jpg',
+        link_text: BUTTON1,
+        title: 'TGM Research Driving Sustainable Change with Consumer Insights',
     },
     {
         link: 'https://tgmresearch.com/about-us/esg-strategy.html',
         imgUrl: './images/library/8th-anniversary/esg/8.jpg',
+        link_text: BUTTON1,
+        title: 'TGM Research Driving Sustainable Change with Consumer Insights',
     },
 ];
 const employeeStories = [
     {
         link: 'https://tgmresearch.com/tgm-stories-emma-aghlamazyan.html',
         imgUrl: './images/library/8th-anniversary/employee-stories/3.jpg',
+        link_text: BUTTON2,
+        title: 'TGM Research Stories about export',
     },
     {
         link: 'https://tgmresearch.com/tgm-stories-viet-nguyen.html',
         imgUrl: './images/library/8th-anniversary/employee-stories/4.jpg',
+        link_text: BUTTON2,
+        title: 'TGM Research Stories about export',
     },
     {
         link: 'https://tgmresearch.com/tgm-stories-giorgos-chantzis.html',
         imgUrl: './images/library/8th-anniversary/employee-stories/5.jpg',
+        link_text: BUTTON2,
+        title: 'TGM Research Stories about export',
     },
     {
         link: 'https://tgmresearch.com/tgm-stories-nhi-ho.html',
         imgUrl: './images/library/8th-anniversary/employee-stories/6.jpg',
+        link_text: BUTTON2,
+        title: 'TGM Research Stories about export',
     },
     {
         link: 'https://tgmresearch.com/tgm-stories-aljon-llaguno.html',
         imgUrl: './images/library/8th-anniversary/employee-stories/7.jpg',
+        link_text: BUTTON2,
+        title: 'TGM Research Stories about export',
     },
 ];
 
 const tgmMoments = [
     {
         imgUrl: './images/library/8th-anniversary/tgm-moments/2.jpg',
+        title: 'TGM Research Moments',
     },
     {
         imgUrl: './images/library/8th-anniversary/tgm-moments/3.jpg',
+        title: 'TGM Research Moments',
     },
     {
         imgUrl: './images/library/8th-anniversary/tgm-moments/4.jpg',
+        title: 'TGM Research Moments',
     },
     {
         imgUrl: './images/library/8th-anniversary/tgm-moments/5.jpg',
+        title: 'TGM Research Moments',
     },
     {
         imgUrl: './images/library/8th-anniversary/tgm-moments/6.jpg',
+        title: 'TGM Research Moments',
     },
     {
         link: 'https://tgmresearch.com/tgm-step-up-and-give-a-hand.html',
         imgUrl: './images/library/8th-anniversary/tgm-moments/7.jpg',
+        link_text: BUTTON2,
+        title: 'TGM Research Moments',
     },
     {
         imgUrl: './images/library/8th-anniversary/tgm-moments/8.jpg',
+        title: 'TGM Research Moments',
     },
     {
         imgUrl: './images/library/8th-anniversary/tgm-moments/9.jpg',
+        title: 'TGM Research Moments',
     },
     {
         imgUrl: './images/library/8th-anniversary/tgm-moments/10.jpg',
+        title: 'TGM Research Moments',
     },
     {
         imgUrl: './images/library/8th-anniversary/tgm-moments/11.jpg',
+        title: 'TGM Research Moments',
     },
 ];
 
@@ -142,10 +186,12 @@ const presents = [
     {
         name: 'Item 1',
         imgUrl: './images/library/8th-anniversary/infographics/1.jpg',
+        title: '8 Years of breaking barriers, driving innovation & making global impact banner',
         action: ACTION2,
     },
     {
         imgUrl: './images/library/8th-anniversary/tgm-moments/1.jpg',
+        title: 'TGM Research Moments Banner',
         action: ACTION1,
         items: tgmMoments,
         name: 'Item 11',
@@ -155,12 +201,14 @@ const presents = [
         action: ACTION3,
         items: employeeStories,
         name: 'Item 2',
+        title: 'TGM Research Employee Stories Banner',
     },
     {
         imgUrl: './images/library/8th-anniversary/esg/3.jpg',
         action: ACTION4,
         items: esg,
         name: 'Item 3',
+        title: 'TGM Research ESG Banner',
     },
     ...consumerSnapshot.map((it, idx) => ({
         ...it,
@@ -346,7 +394,7 @@ function updateModalContainer(item) {
 document.addEventListener('keydown', onKeyDown);
 
 function onKeyDown(e) {
-    disabledAutoFlyIn3D();
+    // disabledAutoFlyIn3D();
     let keyCode = e.which;
     // alert(keyCode);
     const moveAmount = 0.5;
@@ -482,7 +530,7 @@ function handleFlyTo3DItem(productName) {
 }
 let intervalTimer = null;
 let timeoutTimers = [];
-enableAutoFlyIn3D();
+// enableAutoFlyIn3D();
 function enableAutoFlyIn3D() {
     presents.forEach((it, idx) => {
         const timer = setTimeout(function () {
@@ -785,7 +833,7 @@ slides.forEach((el, idx) => {
                 mainModal.setContainer(html);
                 mainModal.open();
             }
-            disabledAutoFlyIn3D();
+            // disabledAutoFlyIn3D();
         }
     });
 });
