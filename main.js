@@ -638,9 +638,7 @@ class Slider {
     }
 
     handleTransform() {
-        this.slides[this.current_slide - 1].scrollIntoView({
-            behavior: 'smooth',
-        });
+        this.slides[this.current_slide - 1].scrollIntoView(true);
         this.slides.forEach((it, idx) => {
             it.classList.toggle('active', idx == this.current_slide - 1);
         });
