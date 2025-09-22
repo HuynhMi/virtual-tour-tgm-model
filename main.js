@@ -620,7 +620,7 @@ class Slider {
                 <div class="slider-item slide" ${
                     it.name && `data-name="${it.name}"`
                 }>
-                    <img src="${it.imgUrl}"  width="200" />
+                    <img src="${it.imgUrl}"  width="200" alt="${it.title}"/>
                 </div>
             `
         );
@@ -696,13 +696,13 @@ class Slider {
         return div;
     }
 
-    updateThumnailSlide({ imgUrl, link }) {
+    updateThumnailSlide({ imgUrl, link, link_text, title }) {
         if (this.type == SLIDER_TYPE_2) {
             this.sliderWrapper.querySelector('.main-slide').innerHTML = `<div>
-                <img src="${imgUrl}" alt  />
+                <img src="${imgUrl}" alt="${title}"  />
                 ${
                     link
-                        ? `<a href="${link}" class="explore-link secondary" target="_blank">${BUTTON2}</a>`
+                        ? `<a href="${link}" class="explore-link secondary" target="_blank">${link_text}</a>`
                         : ''
                 }
             </div>`;
@@ -809,7 +809,7 @@ slides.forEach((el, idx) => {
         esgModal.close();
         // Modal.closeAllModal();
 
-        const { imgUrl, action, link } = presents[idx];
+        const { imgUrl, action, link, link_text, title } = presents[idx];
         if (imgUrl) {
             let html = '';
             if (action == ACTION1) {
@@ -824,11 +824,11 @@ slides.forEach((el, idx) => {
             if (action == ACTION2) {
                 if (link) {
                     html = `
-                    <img src="${imgUrl}"/>
-                    <a href="${link}" class="explore-link" target="_blank">${BUTTON1}</a>
+                    <img src="${imgUrl}" alt="${title}"/>
+                    <a href="${link}" class="explore-link" target="_blank">${link_text}</a>
                 `;
                 } else {
-                    html = `<img src="${imgUrl}" alt/>`;
+                    html = `<img src="${imgUrl}" alt="${title}"/>`;
                 }
                 mainModal.setContainer(html);
                 mainModal.open();

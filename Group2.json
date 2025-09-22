@@ -96,6 +96,16 @@
 			"depthSegments": 1
 		},
 		{
+			"uuid": "88fbae17-69df-4034-a471-94b1554411ae",
+			"type": "BoxGeometry",
+			"width": 1.777,
+			"height": 1,
+			"depth": 0.1,
+			"widthSegments": 1,
+			"heightSegments": 1,
+			"depthSegments": 1
+		},
+		{
 			"uuid": "df845b7a-dd16-4380-a810-adceb98a7812",
 			"type": "BoxGeometry",
 			"width": 1.777,
@@ -215,6 +225,18 @@
 			"blendColor": 0
 		},
 		{
+			"uuid": "dc9af05e-eb61-4d86-ac2e-4f8ea47ca75a",
+			"type": "MeshStandardMaterial",
+			"color": 16777215,
+			"roughness": 1,
+			"metalness": 0,
+			"emissive": 0,
+			"envMapRotation": [0,0,0,
+				"XYZ"],
+			"envMapIntensity": 1,
+			"blendColor": 0
+		},
+		{
 			"uuid": "8ed2a802-76ca-46d5-b0e4-6aefb752d461",
 			"type": "MeshStandardMaterial",
 			"color": 16777215,
@@ -249,7 +271,7 @@
 				"type": "Mesh",
 				"name": "Item 2",
 				"layers": 1,
-				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0.17902267759793977,0.6745906525079692,-4.990835633894166,1],
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0.8649589113152979,0.6910333070394484,-5.035295666746842,1],
 				"up": [0,1,0],
 				"geometry": "6d13bed3-d387-4803-b0fa-b5c8b6f86090",
 				"material": "e5a37d52-c28d-4991-b914-d8beded42540"
@@ -259,7 +281,7 @@
 				"type": "Mesh",
 				"name": "Item 3",
 				"layers": 1,
-				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-2.906086579354154,0.675880420008744,-5.001234099793205,1],
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-1.3897468130399464,0.6211917080034852,-5.031825006215345,1],
 				"up": [0,1,0],
 				"geometry": "fe2554a7-0797-43b3-8ea0-b7730ec610c7",
 				"material": "bb0e5e23-8dee-4723-a573-699335ea22ab"
@@ -323,6 +345,16 @@
 				"up": [0,1,0],
 				"geometry": "6685fc07-7b1c-42fe-9d80-42f6035bfd8a",
 				"material": "9c540a24-b139-406a-a3ec-5cde7f8b780b"
+			},
+			{
+				"uuid": "5c03607a-43c2-4501-813b-8d86e6737415",
+				"type": "Mesh",
+				"name": "Item 10",
+				"layers": 1,
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-3.5463010210727113,0.6067516492547349,-5.0160887428473355,1],
+				"up": [0,1,0],
+				"geometry": "88fbae17-69df-4034-a471-94b1554411ae",
+				"material": "dc9af05e-eb61-4d86-ac2e-4f8ea47ca75a"
 			},
 			{
 				"uuid": "7cedd430-5ee6-4b7e-83ff-87af5d2658fe",
