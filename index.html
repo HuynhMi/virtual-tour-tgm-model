@@ -137,6 +137,13 @@
             .modal-wrapper .modal-close:hover {
                 transform: scale(1.1);
             }
+
+            @media (max-width: 540px) {
+                .modal-wrapper .modal-close {
+                    font-size: 15px;
+                    padding: 4px 9px;
+                }
+            }
             .content {
                 font-size: 18px;
             }
@@ -329,6 +336,16 @@
                 }
                 .explore-link {
                     font-size: 16px;
+                }
+                .btn-next,
+                .btn-pre {
+                    height: 35px;
+                    font-size: 18px;
+                    width: 35px;
+                }
+                .modal-wrapper {
+                    padding-left: 0px;
+                    padding-right: 0px;
                 }
             }
         </style>
