@@ -310,13 +310,27 @@ objectLoader.load('./Group2.json', (obj) => {
                         item.imgUrl,
                         (texture) => {
                             // Configure texture properties
-                            texture.encoding = THREE.sRGBEncoding;
-                            texture.anisotropy =
-                                renderer.capabilities.getMaxAnisotropy();
+                            // texture.encoding = THREE.sRGBEncoding;
+                            // texture.anisotropy =
+                            //     renderer.capabilities.getMaxAnisotropy();
+
+                            // Improve texture quality settings
+                            // texture.anisotropy =
+                            // renderer.capabilities.getMaxAnisotropy();
+                            // texture.wrapS = THREE.RepeatWrapping;
+                            // texture.wrapT = THREE.RepeatWrapping;
+                            // texture.minFilter = THREE.LinearMipmapLinearFilter;
+                            // texture.magFilter = THREE.LinearFilter;
+                            // texture.generateMipmaps = true;
+                            texture.colorSpace = THREE.SRGBColorSpace;
+                            // texture.colorSpace = THREE.LinearSRGBColorSpace; // For non-color data
 
                             // Create new material with texture
                             child.material = new THREE.MeshStandardMaterial({
                                 map: texture,
+                                color: new THREE.Color(0xffffff).multiplyScalar(
+                                    2.5
+                                ),
                                 side: THREE.DoubleSide,
                                 roughness: 0.3,
                                 metalness: 0.1,
