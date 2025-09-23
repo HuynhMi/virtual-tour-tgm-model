@@ -649,6 +649,7 @@ class Slider {
         this.slides[this.current_slide - 1].scrollIntoView({
             block: 'nearest',
             behavior: 'smooth',
+            inline: 'start',
         });
         this.slides.forEach((it, idx) => {
             it.classList.toggle('active', idx == this.current_slide - 1);
