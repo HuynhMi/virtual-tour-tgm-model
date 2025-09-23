@@ -587,7 +587,7 @@ class Slider {
         this.totalSlides = this.slides.length;
         this.btnNext = document.querySelector(`#${id} .btn-next`);
         this.btnPre = document.querySelector(`#${id} .btn-pre`);
-
+        this.stateMove = null;
         this.init();
     }
 
@@ -631,14 +631,25 @@ class Slider {
     next() {
         this.current_slide =
             this.current_slide == this.totalSlides ? 1 : this.current_slide + 1;
+        this.stateMove = -1;
     }
     pre() {
         this.current_slide =
             this.current_slide == 1 ? this.totalSlides : this.current_slide - 1;
+        this.stateMove = -1;
     }
 
     handleTransform() {
-        this.slides[this.current_slide - 1].scrollIntoView(true);
+        // const w = this.slides[this.current_slide - 1].offsetWidth;
+        // console.log('w', w);
+        // console.log('current slide', this.current_slide);
+        // const transformX = w * this.stateMove * (this.current_slide - 1);
+        // console.log('transformX', transformX);
+        // this.slider.style.transform = `translateX(${transformX}px)`;
+        this.slides[this.current_slide - 1].scrollIntoView({
+            block: 'center',
+            behavior: 'smooth',
+        });
         this.slides.forEach((it, idx) => {
             it.classList.toggle('active', idx == this.current_slide - 1);
         });
