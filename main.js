@@ -647,7 +647,7 @@ class Slider {
         // console.log('transformX', transformX);
         // this.slider.style.transform = `translateX(${transformX}px)`;
         this.slides[this.current_slide - 1].scrollIntoView({
-            block: 'center',
+            block: 'nearest',
             behavior: 'smooth',
         });
         this.slides.forEach((it, idx) => {
