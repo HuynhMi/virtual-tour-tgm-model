@@ -143,7 +143,7 @@ const tgmMoments = [
         title: 'TGM Research Moments',
     },
     {
-        imgUrl: './images/library/8th-anniversary/tgm-moments/3.jpg',
+        imgUrl: './images/library/8th-anniversary/tgm-moments/12.jpg',
         title: 'TGM Research Moments',
     },
     {
