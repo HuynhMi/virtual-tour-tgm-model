@@ -634,7 +634,9 @@ class Slider {
                 <div class="slider-item slide" ${
                     it.name && `data-name="${it.name}"`
                 }>
-                    <img src="${it.imgUrl}"  width="200" alt="${it.title}"/>
+                    <img src="${it.imgUrl}"  width="200" alt="${
+                it.title
+            }" loading="lazy"/>
                 </div>
             `
         );
@@ -682,7 +684,7 @@ class Slider {
             <div class="slider-wrapper__inner">
                     <div class="slider">
                         <!-- <div class="slide">
-                    <img src="./assets/images/1.webp" alt width="200" />
+                    <img src="./assets/images/1.webp" alt width="200" loading="lazy"/>
                 </div> -->
                     </div>
                 </div>
@@ -723,7 +725,7 @@ class Slider {
     updateThumnailSlide({ imgUrl, link, link_text, title }) {
         if (this.type == SLIDER_TYPE_2) {
             this.sliderWrapper.querySelector('.main-slide').innerHTML = `<div>
-                <img src="${imgUrl}" alt="${title}"  />
+                <img src="${imgUrl}" alt="${title}"  loading="lazy"/>
                 ${
                     link
                         ? `<a href="${link}" class="explore-link secondary" target="_blank">${link_text}</a>`
@@ -848,11 +850,11 @@ slides.forEach((el, idx) => {
             if (action == ACTION2) {
                 if (link) {
                     html = `
-                    <img src="${imgUrl}" alt="${title}"/>
+                    <img src="${imgUrl}" alt="${title}" loading="lazy"/>
                     <a href="${link}" class="explore-link" target="_blank">${link_text}</a>
                 `;
                 } else {
-                    html = `<img src="${imgUrl}" alt="${title}"/>`;
+                    html = `<img src="${imgUrl}" alt="${title}" loading="lazy"/>`;
                 }
                 mainModal.setContainer(html);
                 mainModal.open();
